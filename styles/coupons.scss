@@ -1,0 +1,174 @@
+@import "screens";
+
+.coupon {
+
+  height: 161px;
+  padding: 16px 20px;
+
+  border-radius: 10px;
+
+  @include screenT {
+    height: 144px;
+    padding: 15px 18px;
+  }
+
+  @include screenM {
+    height: 130px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &:hover {
+    .coupon__box {
+      border: 1px solid #df212d;
+      &::after,
+      &::before {
+        border-top: 1px solid #df212d;
+        border-right: 1px solid #df212d;
+      }
+    }
+  }
+
+  &__box,
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    border-radius: inherit;
+    box-shadow: 0 2px 6px transparentize(black, 0.85);
+
+    transition: border 95ms ease;
+    border: 1px solid transparent;
+
+    &::after,
+    &::before {
+      content: '';
+      display: block;
+      width: 9px;
+      height: 9px;
+
+      background-color: white;
+      border-top-right-radius: 3px;
+      box-shadow: inset -10px 10px 6px -10px transparentize(black, 0.85);
+
+      position: absolute;
+      top: 50%;
+
+      transition: inherit;
+      border-top: 1px solid transparent;
+      border-right: 1px solid transparent;
+    }
+
+    &::before {
+      left: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      $angle: 45 + 180;
+
+      right: 0;
+      transform: translate(50%, -50%) rotate(#{$angle}deg);
+    }
+  }
+
+  &__name,
+  &__description,
+  &__label {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 16px;
+
+    color: #000;
+
+    @include screenT {
+      font-size: 14px;
+    }
+    @include screenM {
+      font-size: 12px;
+    }
+  }
+
+  &__name {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    margin-bottom: 5px;
+
+    @include screenM {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    opacity: 0.5;
+
+    flex-grow: 1;
+  }
+
+  &__code {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 28px;
+
+    color: #df212d;
+
+    margin-bottom: 6px;
+
+    @include screenT {
+      margin-bottom: 3px;
+    }
+
+    @include screenM {
+      font-size: 28px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.5;
+
+    @include screenT {
+      font-size: 16px;
+    }
+  }
+}
+
+
+.coupon-image {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right center;
+  background-origin: content-box;
+
+  @for $i from 1 through 8 {
+    &-#{$i} {
+      @extend .coupon-image;
+
+      border-radius: inherit;
+
+      background-image: url("../assets/images/image #{$i}.png");
+    }
+  }
+}
