@@ -33,13 +33,6 @@
     grid-area: sidebar;
   }
 
-  > header {
-    grid-area: header;
-
-    position: sticky;
-    top: 0;
-  }
-
   > main {
     grid-area: main;
 
@@ -47,15 +40,21 @@
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     align-self: start;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     grid-auto-rows: 1fr;
+
+    @include screenL {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
 
     @include screenDL {
       padding: 40px 60px;
     }
 
-    @include screenT {
+    @include screenTD {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include screenT {
       padding: 27px 26px;
     }
 
@@ -63,5 +62,71 @@
       grid-template-columns: 1fr;
       padding: 27px 20px;
     }
+  }
+
+  > header {
+    grid-area: header;
+
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: space-between;
+
+    padding: 40px 60px;
+    background-color: white;
+    border-bottom: 1px solid #e5e5e5;
+
+    transition: height 0.3s ease, padding-left 0.3s ease;
+
+    @include screenT {
+      padding: 27px 26px;
+
+      &.scroll {
+        padding-left: 77px;
+      }
+    }
+
+    @include screenM {
+      padding: 27px 21px;
+
+      &.scroll {
+        padding-left: 68px;
+      }
+    }
+
+    &.scroll {
+      > .header {
+        @include screenMT {
+          height: 0;
+        }
+      }
+    }
+
+    > .header {
+      overflow: hidden;
+      //flex-grow: 1;
+
+      height: calc(40px + 31px + 4px);
+      transition: height 0.3s ease;
+
+      @include screenDL {
+        padding-top: 4px;
+      }
+
+      @include screenT {
+        height: calc(40px + 31px);
+
+        text-align: right;
+      }
+
+      @include screenM {
+        text-align: right;
+      }
+    }
+
   }
 }

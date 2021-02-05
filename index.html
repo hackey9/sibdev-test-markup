@@ -13,9 +13,11 @@
         const sidebar = document.querySelector("#sidebar")
         const sidebarFake = document.querySelector("#sidebar-fake")
         const layout = document.querySelector("#layout")
+        const header = document.querySelector("#header")
 
         button.addEventListener("click", toggleOpenSidebar)
         layout.addEventListener("click", hideSidebar)
+        layout.addEventListener("scroll", handleScroll)
 
         function toggleOpenSidebar() {
           sidebar.classList.toggle("closed")
@@ -26,6 +28,22 @@
           sidebar.classList.add("closed")
           sidebarFake.classList.add("closed")
         }
+
+        let shouldHide = layout.scrollTop > 200
+
+        function handleScroll(e) {
+          const scroll = e.target.scrollTop
+          const shouldBeHidden = scroll > 200
+
+          if (shouldBeHidden !== shouldHide) {
+            // changed
+            shouldHide = shouldBeHidden
+            shouldHide
+              ? header.classList.add("scroll")
+              : header.classList.remove("scroll")
+            console.log(shouldHide)
+          }
+        }
       })
     </script>
 </head>
@@ -34,7 +52,6 @@
 
         <div class="layout" id="layout">
             <aside class="sidebar closed fake" id="sidebar-fake"></aside>
-            <header></header>
             <main>
                 <!-- i dont know how to repeat html =) -->
                 <div class="coupon">
@@ -118,6 +135,14 @@
                 </div>
 
             </main>
+            <header class="--scroll" id="header">
+                <div class="header">
+                    <h1>Развлечения</h1>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Какой магазин вам нужен?">
+                </div>
+            </header>
         </div>
 
         <div class="layout abs">

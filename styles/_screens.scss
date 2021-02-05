@@ -38,6 +38,15 @@ $breakpointD: 1440;
   // i believe sass should to optimize that.
 }
 
+@mixin screenTD {
+  @include screenT {
+    @content;
+  }
+  @include screenD {
+    @content;
+  }
+}
+
 @mixin screenDL {
   @include screenD {
     @content;
