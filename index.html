@@ -12,10 +12,10 @@
         const button = document.querySelector("#button")
         const sidebar = document.querySelector("#sidebar")
         const sidebarFake = document.querySelector("#sidebar-fake")
-        const backface = document.querySelector("#backface")
+        const layout = document.querySelector("#layout")
 
         button.addEventListener("click", toggleOpenSidebar)
-        backface.addEventListener("click", hideSidebar)
+        layout.addEventListener("click", hideSidebar)
 
         function toggleOpenSidebar() {
           sidebar.classList.toggle("closed")
@@ -32,7 +32,7 @@
 <body>
     <div id="root">
 
-        <div class="layout">
+        <div class="layout" id="layout">
             <aside class="sidebar closed" id="sidebar-fake"></aside>
             <header></header>
             <main style="height: 3000px; background-image: linear-gradient(to bottom, black, white)"></main>
@@ -70,7 +70,6 @@
                     </div>
                 </div>
             </aside>
-            <main id="backface"></main>
         </div>
 
 

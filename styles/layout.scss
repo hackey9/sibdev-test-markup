@@ -1,3 +1,6 @@
+@import "screens";
+
+
 .layout {
   height: 100%;
   overflow-x: hidden;
@@ -40,10 +43,4 @@
   > main {
     grid-area: main;
   }
-
-}
-
-
-#sidebar.closed + #backface {
-  display: none;
 }
