@@ -1,0 +1,56 @@
+@import "colors";
+@import "screens";
+
+
+.nav-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 64px;
+
+  cursor: pointer;
+  user-select: none;
+
+  &::before {
+    content: '';
+    display: block;
+
+    height: 24px;
+    width: 2px;
+    margin-right: 40px;
+
+    background-color: transparent; // should be blue
+
+    @include screenM {
+      height: 18px;
+      margin-right: 19px;
+    }
+  }
+
+  > span {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+
+    margin-left: 12px;
+  }
+
+  color: $black;
+  &:hover, &.active {
+    color: $blue;
+  }
+
+  &.active::before {
+    background-color: $blue;
+  }
+
+  .closed > & {
+    height: 60px;
+    > span { display: none;}
+  }
+}

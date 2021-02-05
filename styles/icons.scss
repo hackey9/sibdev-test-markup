@@ -1,7 +1,7 @@
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 
   display: inline-block;
   flex-shrink: 0;
@@ -20,7 +20,9 @@
 
     background-image: url("../assets/icons/default/#{$icon}.svg");
 
-    &.active {
+    &.active,
+    .active > &,
+    :hover > & {
       background-image: url("../assets/icons/active/#{$icon}.svg");
     }
   }
