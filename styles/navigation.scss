@@ -38,9 +38,19 @@
     line-height: 22px;
 
     margin-left: 12px;
+    @include screenM {
+      margin-left: 0;
+    }
+  }
+
+  > i {
+    @include screenM {
+      display: none;
+    }
   }
 
   color: $black;
+
   &:hover, &.active {
     color: $blue;
   }
@@ -49,8 +59,14 @@
     background-color: $blue;
   }
 
+  .sidebar.closed &,
   .closed > & {
-    height: 60px;
-    > span { display: none;}
+    @include screenMT {
+      height: 60px;
+
+      > span {
+        display: none;
+      }
+    }
   }
 }

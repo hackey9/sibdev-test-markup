@@ -21,9 +21,34 @@
     background-image: url("../assets/icons/default/#{$icon}.svg");
 
     &.active,
-    .active > &,
-    :hover > & {
+    .nav-item.active &,
+    .nav-item:hover & {
       background-image: url("../assets/icons/active/#{$icon}.svg");
     }
   }
+}
+
+.icon-menu {
+  @extend .icon;
+  width: 26px;
+  height: 20px;
+}
+
+.icon-menu-burger {
+  @extend .icon-menu;
+  background-image: url("../assets/icons/menu-open.svg");
+}
+
+.icon-menu-close {
+  @extend .icon-menu;
+  background-image: url("../assets/icons/menu-close.svg");
+}
+
+
+.sidebar.closed .button-menu {
+  @extend .icon-menu-burger;
+}
+
+.sidebar:not(.closed) .button-menu {
+  @extend .icon-menu-close;
 }

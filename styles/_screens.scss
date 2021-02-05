@@ -9,19 +9,31 @@ $breakpointD: 1440;
 }
 
 @mixin screenT {
-  @media (min-width: #{$breakpointM}) and (max-width: #{$breakpointT - 1}px) {
+  @media (min-width: #{$breakpointM}px) and (max-width: #{$breakpointT - 1}px) {
     @content;
   }
 }
 
 @mixin screenD {
-  @media (min-width: #{$breakpointT}) and (max-width: #{$breakpointD - 1}px) {
+  @media (min-width: #{$breakpointT}px) and (max-width: #{$breakpointD - 1}px) {
     @content;
   }
 }
 
 @mixin screenL {
-  @media (min-width: #{$breakpointD}) {
+  @media (min-width: #{$breakpointD}px) {
     @content;
   }
+}
+
+// mixed
+
+@mixin screenMT {
+  @include screenT {
+    @content;
+  }
+  @include screenM {
+    @content;
+  }
+  // i believe sass should to optimize that.
 }
