@@ -1,0 +1,27 @@
+
+.icon {
+  width: 20px;
+  height: 20px;
+
+  display: inline-block;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-origin: content-box;
+
+}
+
+@each $icon in beauty, car, catalog, enjoy, health, search {
+  .icon-#{$icon} {
+    @extend .icon;
+
+    background-image: url("../assets/icons/default/#{$icon}.svg");
+
+    &.active {
+      background-image: url("../assets/icons/active/#{$icon}.svg");
+    }
+  }
+}
