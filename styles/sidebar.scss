@@ -49,6 +49,12 @@
     }
   }
 
+  &.fake {
+    @include screenM {
+      width: 12px;
+    }
+  }
+
   &__head {
     height: 106px;
     margin-bottom: 5px;
@@ -126,7 +132,7 @@
       align-items: center;
       justify-content: center;
 
-      @include screenD {
+      @include screenDL {
         display: none;
       }
     }
