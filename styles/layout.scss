@@ -1,0 +1,49 @@
+.layout {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  display: grid;
+  grid-template:
+    "sidebar header"
+    "sidebar  main ";
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+
+  &.abs {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    > * {
+      pointer-events: initial;
+    }
+  }
+
+  > aside {
+    grid-area: sidebar;
+  }
+
+  > header {
+    grid-area: header;
+
+    position: sticky;
+    top: 0;
+  }
+
+  > main {
+    grid-area: main;
+  }
+
+}
+
+
+#sidebar.closed + #backface {
+  display: none;
+}

@@ -4,7 +4,16 @@
 .sidebar {
 
   width: 240px;
+  height: 100%;
   background-color: $sidebar;
+
+  transition: width 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
 
   @include screenT {
     width: 225px;
@@ -13,7 +22,8 @@
       width: 104px;
 
       .sidebar__head__company {
-        display: none;
+        opacity: 0;
+        //display: none;
       }
     }
   }
@@ -29,7 +39,8 @@
 
       .sidebar__head__logo,
       .sidebar__head__company {
-        display: none;
+        //display: none;
+        opacity: 0;
       }
 
       .sidebar__nav {
@@ -49,6 +60,10 @@
     align-items: center;
     justify-content: flex-start;
 
+    flex-shrink: 0;
+
+    transition: padding-left 0.2s ease;
+
     &__logo {
       width: 50px;
       height: 50px;
@@ -60,6 +75,9 @@
       background-origin: content-box;
 
       flex-shrink: 0;
+
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
 
       @include screenMT {
         width: 24px;
@@ -77,6 +95,8 @@
       margin-left: 10px;
 
       color: $black;
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
 
       @include screenMT {
         margin-left: 5px;
@@ -113,6 +133,9 @@
   }
 
   &__nav {
-    // nothing here =)
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }

@@ -10,6 +10,7 @@
   justify-content: flex-start;
 
   height: 64px;
+  transition: height 0.2s ease-in-out 0.1s;
 
   cursor: pointer;
   user-select: none;
@@ -17,6 +18,8 @@
   &::before {
     content: '';
     display: block;
+
+    flex-shrink: 0;
 
     height: 24px;
     width: 2px;
@@ -41,6 +44,10 @@
     @include screenM {
       margin-left: 0;
     }
+
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
   }
 
   > i {
@@ -65,7 +72,8 @@
       height: 60px;
 
       > span {
-        display: none;
+        opacity: 0;
+        //display: none;
       }
     }
   }

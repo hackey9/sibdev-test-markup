@@ -7,9 +7,72 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SibDev Test - адаптивный дизайн</title>
     <link rel="stylesheet" href="styles/index.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const button = document.querySelector("#button")
+        const sidebar = document.querySelector("#sidebar")
+        const sidebarFake = document.querySelector("#sidebar-fake")
+        const backface = document.querySelector("#backface")
+
+        button.addEventListener("click", toggleOpenSidebar)
+        backface.addEventListener("click", hideSidebar)
+
+        function toggleOpenSidebar() {
+          sidebar.classList.toggle("closed")
+          sidebarFake.classList.toggle("closed")
+        }
+
+        function hideSidebar() {
+          sidebar.classList.add("closed")
+          sidebarFake.classList.add("closed")
+        }
+      })
+    </script>
 </head>
 <body>
     <div id="root">
+
+        <div class="layout">
+            <aside class="sidebar closed" id="sidebar-fake"></aside>
+            <header></header>
+            <main style="height: 3000px; background-image: linear-gradient(to bottom, black, white)"></main>
+        </div>
+
+        <div class="layout abs">
+            <aside class="sidebar closed" id="sidebar">
+                <div class="sidebar__head">
+                    <div class="sidebar__head__logo"></div>
+                    <div class="sidebar__head__company">BECO</div>
+                    <div class="sidebar__head__button" id="button">
+                        <i class="button-menu"></i>
+                    </div>
+                </div>
+                <div class="sidebar__nav">
+                    <div class="nav-item active">
+                        <i class="icon-catalog"></i>
+                        <span>Каталог</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="icon-health"></i>
+                        <span>Здоровье</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="icon-beauty"></i>
+                        <span>Красота</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="icon-enjoy"></i>
+                        <span>Развлечения</span>
+                    </div>
+                    <div class="nav-item">
+                        <i class="icon-car"></i>
+                        <span>Авто</span>
+                    </div>
+                </div>
+            </aside>
+            <main id="backface"></main>
+        </div>
+
 
     </div>
 </body>
