@@ -1,0 +1,27 @@
+$breakpointM: 768;
+$breakpointT: 1024;
+$breakpointD: 1440;
+
+@mixin screenM {
+  @media (max-width: #{$breakpointM - 1}px) {
+    @content;
+  }
+}
+
+@mixin screenT {
+  @media (min-width: #{$breakpointM}) and (max-width: #{$breakpointT - 1}px) {
+    @content;
+  }
+}
+
+@mixin screenD {
+  @media (min-width: #{$breakpointT}) and (max-width: #{$breakpointD - 1}px) {
+    @content;
+  }
+}
+
+@mixin screenL {
+  @media (min-width: #{$breakpointD}) {
+    @content;
+  }
+}
