@@ -1,0 +1,14 @@
+{
+  "name": "markup",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"sass styles/index.scss:styles/index.css --watch\" \"serve\" \"echo Dev server started\"",
+    "build": "sass styles/index.scss:styles/index.css & echo 'Compiled!'"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "sass": "^1.32.6",
+    "serve": "^11.3.2"
+  }
+}
