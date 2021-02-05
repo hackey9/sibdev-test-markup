@@ -14,10 +14,13 @@
         const sidebarFake = document.querySelector("#sidebar-fake")
         const layout = document.querySelector("#layout")
         const header = document.querySelector("#header")
+        const navItems = document.querySelectorAll(".nav-item")
+        const title = document.querySelector("#title")
 
         button.addEventListener("click", toggleOpenSidebar)
         layout.addEventListener("click", hideSidebar)
         layout.addEventListener("scroll", handleScroll)
+        navItems.forEach(navItem => navItem.addEventListener("click", handleSelect))
 
         function toggleOpenSidebar() {
           sidebar.classList.toggle("closed")
@@ -43,6 +46,15 @@
               : header.classList.remove("scroll")
             console.log(shouldHide)
           }
+        }
+
+        function handleSelect(e) {
+          navItems.forEach(navItem => navItem.classList.remove("active"))
+          e.currentTarget.classList.add("active")
+
+          const span = e.currentTarget.children[1]
+          const text = span.innerText
+          title.innerText = text
         }
       })
     </script>
@@ -137,7 +149,7 @@
             </main>
             <header class="--scroll" id="header">
                 <div class="header">
-                    <h1>Развлечения</h1>
+                    <h1 id="title">Развлечения</h1>
                 </div>
                 <div class="search">
                     <input type="text" placeholder="Какой магазин вам нужен?">
@@ -155,7 +167,7 @@
                     </div>
                 </div>
                 <div class="sidebar__nav">
-                    <div class="nav-item active">
+                    <div class="nav-item">
                         <i class="icon-catalog"></i>
                         <span>Каталог</span>
                     </div>
@@ -167,7 +179,7 @@
                         <i class="icon-beauty"></i>
                         <span>Красота</span>
                     </div>
-                    <div class="nav-item">
+                    <div class="nav-item active">
                         <i class="icon-enjoy"></i>
                         <span>Развлечения</span>
                     </div>
